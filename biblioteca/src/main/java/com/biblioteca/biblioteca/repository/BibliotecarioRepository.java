@@ -1,6 +1,6 @@
-package repository;
+package com.biblioteca.biblioteca.repository;
 
-import model.Bibliotecario;
+import com.biblioteca.biblioteca.model.Bibliotecario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BibliotecarioRepository  extends JpaRepository<Bibliotecario, Long> {

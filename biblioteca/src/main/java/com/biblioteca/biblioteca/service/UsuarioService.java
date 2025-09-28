@@ -1,12 +1,12 @@
-package service;
+package com.biblioteca.biblioteca.service;
 
-import dto.UsuarioDTO;
-import dto.UsuarioRequestDTO;
+import com.biblioteca.biblioteca.dto.UsuarioDTO;
+import com.biblioteca.biblioteca.dto.UsuarioRequestDTO;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import model.Usuario;
+import com.biblioteca.biblioteca.model.Usuario;
 import org.springframework.stereotype.Service;
-import repository.UsuarioRepository;
+import com.biblioteca.biblioteca.repository.UsuarioRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

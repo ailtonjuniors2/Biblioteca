@@ -1,15 +1,14 @@
-package dto;
+package com.biblioteca.biblioteca.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 public class BibliotecarioRequestDTO extends UsuarioRequestDTO{
     @NotBlank(message = "A matrícula é obrigatória")
     private String matricula;

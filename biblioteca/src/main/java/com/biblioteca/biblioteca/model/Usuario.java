@@ -1,4 +1,4 @@
-package model;
+package com.biblioteca.biblioteca.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
