@@ -25,11 +25,6 @@ public class Emprestimo {
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
-    @NotNull(message = "Bibliotecário é obrigatório")
-    @ManyToOne
-    @JoinColumn(name = "bibliotecario_id", nullable = false)
-    private Bibliotecario bibliotecario;
-
     @NotNull(message = "Livro é obrigatório")
     @ManyToOne
     @JoinColumn(name = "livro_id", nullable = false)
@@ -39,4 +34,7 @@ public class Emprestimo {
     private LocalDate dataEmprestimo;
 
     private LocalDate dataDevolucao;
+
+    @Enumerated(EnumType.STRING)
+    private StatusEmprestimo status;
 }

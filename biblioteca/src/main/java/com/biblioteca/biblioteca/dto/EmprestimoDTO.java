@@ -1,4 +1,3 @@
 package com.biblioteca.biblioteca.dto;
 
-public class EmprestimoDTO {
-}
+public record EmprestimoDTO(Long livroId, Long usuarioId) {}
