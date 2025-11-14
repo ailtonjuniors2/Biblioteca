@@ -31,7 +31,7 @@ public class LivroService {
     // Criar livro após validar ISSN na API externa
     public Livro criarLivro(Livro livro) {
         String issn = livro.getIssn();
-        if (livroRepository.existsById(issn)) {
+        if (livroRepository.existsById(Long.valueOf(issn))) {
             throw new IllegalArgumentException("Já existe um livro cadastrado com esse ISSN: " + issn);
         }
         validarIssnExterno(issn);
@@ -40,7 +40,7 @@ public class LivroService {
 
     // Atualizar livro existente
     public Livro atualizarLivro(String issn, Livro atualizado) {
-        Livro existente = livroRepository.findById(issn)
+        Livro existente = livroRepository.findById(Long.valueOf(issn))
                 .orElseThrow(() -> new LivroNotFoundException(issn));
         atualizado.setIssn(issn);
         validarIssnExterno(issn);
@@ -52,13 +52,13 @@ public class LivroService {
 
     // Deletar livro
     public void deletarLivro(String issn) {
-        if (!livroRepository.existsById(issn)) throw new LivroNotFoundException(issn);
-        livroRepository.deleteById(issn);
+        if (!livroRepository.existsById(Long.valueOf(issn))) throw new LivroNotFoundException(issn);
+        livroRepository.deleteById(Long.valueOf(issn));
     }
 
     // Buscar livro por ISSN
     public Livro buscarPorIssn(String issn) {
-        return livroRepository.findById(issn)
+        return livroRepository.findById(Long.valueOf(issn))
                 .orElseThrow(() -> new LivroNotFoundException(issn));
     }
 
