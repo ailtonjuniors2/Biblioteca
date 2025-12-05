@@ -2,6 +2,7 @@ package com.biblioteca.biblioteca.controller;
 
 import com.biblioteca.biblioteca.dto.UsuarioDTO;
 import com.biblioteca.biblioteca.dto.UsuarioRequestDTO;
+import com.biblioteca.biblioteca.model.Usuario;
 import com.biblioteca.biblioteca.service.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,21 @@ import java.util.List;
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
+
+
+    // ---------- LOGIN ----------
+    @GetMapping("/login")
+    public ResponseEntity<?> login(@RequestParam String email,
+                                   @RequestParam String senha) {
+
+        Usuario usuario = usuarioService.login(email, senha);
+
+        if (usuario == null) {
+            return ResponseEntity.status(401).body("Credenciais inválidas");
+        }
+
+        return ResponseEntity.ok(new UsuarioDTO(usuario));
+    }
 
     @PostMapping
     public ResponseEntity<UsuarioDTO> criar(@Valid @RequestBody UsuarioRequestDTO request) {

@@ -73,4 +73,9 @@ public class UsuarioService {
                 .email(usuario.getEmail())
                 .build();
     }
+
+    public Usuario login(String email, String senha) {
+        return usuarioRepository.findByEmailAndSenha(email, senha)
+                .orElse(null);
+    }
 }

@@ -18,9 +18,12 @@ import lombok.NoArgsConstructor;
 public class Livro {
 
     @Id
-    @Pattern(regexp = "\\d{4}-\\d{3}[\\dX]", message = "ISSN deve seguir o formato válido (ex: 1234-567X)")
+    @Pattern(
+            regexp = "^(97(8|9))?\\d{9}(\\d|X)$|^\\d{9}(\\d|X)$",
+            message = "ISBN deve ser válido (ISBN-10 ou ISBN-13)"
+    )
     @Column(nullable = false, unique = true)
-    private String issn;
+    private String isbn;
 
     @NotBlank(message = "Título é obrigatório")
     private String titulo;
@@ -28,5 +31,10 @@ public class Livro {
     @NotBlank(message = "Autor é obrigatório")
     private String autor;
 
+    private String anoPublicacao;
+
+    private Integer numeroPaginas;
+
     private boolean disponivel = true;
 }
+
